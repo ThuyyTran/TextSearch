@@ -10,28 +10,44 @@ class SearchText:
 			self.optionSearch = optionSearch
 		if self.optionSearch == 'tfidf':
 			if pathDictKeyWord == '':
-				pathDictKeyWord = '/media/anlab/data-2tb/ANLAB_THUY/SearchText/modelTFIDF/modelGenFeatureTfidf.pickle'
+				self.pathDictKeyWord = 'modelTFIDF/modelGenFeatureTfidf.pickle'
+			else:
+				self.pathDictKeyWord = pathDictKeyWord
 			if pathModelCharacter == '':
-				pathModelCharacter = '/media/anlab/data-2tb/ANLAB_THUY/SearchText/modelTFIDF/searchCharacter.pickle'
+				self.pathModelCharacter = 'modelTFIDF/searchCharacter.pickle'
+			else:
+				self.pathModelCharacter = pathModelCharacter
 			if pathModelAuthor == '':
-				pathModelAuthor = '/media/anlab/data-2tb/ANLAB_THUY/SearchText/modelTFIDF/searchAuthor.pickle'
+				self.pathModelAuthor = 'modelTFIDF/searchAuthor.pickle'
+			else:
+				self.pathModelAuthor = pathModelAuthor
 			if pathModelSeries == '':
-				pathModelSeries = '/media/anlab/data-2tb/ANLAB_THUY/SearchText/modelTFIDF/searchSeries.pickle'
+				self.pathModelSeries = 'modelTFIDF/searchSeries.pickle'
+			else:
+				self.pathModelSeries = pathModelSeries
 		elif self.optionSearch == 'parse':
 			if pathDictKeyWord == '':
-				pathDictKeyWord = '/media/anlab/data-2tb/ANLAB_THUY/SearchText/ModelParse/dict_keyword_EN.pickle'
+				self.pathDictKeyWord = 'ModelParse/dict_keyword_EN.pickle'
+			else:
+				self.pathDictKeyWord = pathDictKeyWord
 			if pathModelCharacter == '':
-				pathModelCharacter = '/media/anlab/data-2tb/ANLAB_THUY/SearchText/ModelParse/searchCharacter_EN.pickle'
+				self.pathModelCharacter = 'ModelParse/searchCharacter_EN.pickle'
+			else:
+				self.pathModelCharacter = pathModelCharacter
 			if pathModelAuthor == '':
-				pathModelAuthor = '/media/anlab/data-2tb/ANLAB_THUY/SearchText/ModelParse/searchAuthor_EN.pickle'
+				self.pathModelAuthor = 'ModelParse/searchAuthor_EN.pickle'
+			else:
+				self.pathModelAuthor = pathModelAuthor
 			if pathModelSeries == '':
-				pathModelSeries = '/media/anlab/data-2tb/ANLAB_THUY/SearchText/ModelParse/searchSeries_EN.pickle'
+				self.pathModelSeries = 'ModelParse/searchSeries_EN.pickle'
+			else:
+				self.pathModelSeries = pathModelSeries
 		else:
 			raise Exception("Option search is tfidf/parse")
-		self.modelSearchAuthor = pickle.load(open(pathModelAuthor, 'rb'))
-		self.modelSearchCharacter = pickle.load(open(pathModelCharacter, 'rb'))
-		self.modelSearchSeries = pickle.load(open(pathModelSeries, 'rb'))
-		self.dict_keyword = pickle.load(open(pathDictKeyWord, 'rb'))
+		self.modelSearchAuthor = pickle.load(open(self.pathModelAuthor, 'rb'))
+		self.modelSearchCharacter = pickle.load(open(self.pathModelCharacter, 'rb'))
+		self.modelSearchSeries = pickle.load(open(self.pathModelSeries, 'rb'))
+		self.dict_keyword = pickle.load(open(self.pathDictKeyWord, 'rb'))
 	def search(self,listText,modelSearch,topk=5):
 		listText = [s.lower() for s in listText]
 		if self.optionSearch == 'tfidf':
