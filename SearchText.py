@@ -65,7 +65,7 @@ class SearchText:
 	def searchAuthor(self,listText,topk=5):
 		return self.search(listText,self.modelSearchAuthor,topk)
 	def searchSeries(self,listText,topk=5):
-		return self.search(self.modelSearchSeries,listText,topk)
+		return self.search(listText,self.modelSearchSeries,topk)
 	def genfeaturesSparseTest(self, words , dict_keyword ):
 		vocabSize = len(dict_keyword.keys())
 		dictVec = {}
