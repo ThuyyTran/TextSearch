@@ -148,21 +148,21 @@ if __name__ == "__main__":
 	# 	pickle.dump(searchAuthor, handle, protocol=pickle.HIGHEST_PROTOCOL)
 	""" Create model and gen tfidf feature with pysparnn.cluster_index """
 	featuresVeccharacter, list_character, featuresSeries, list_series, featuresAuthor, list_author, tv = genDataTfidf()
-	searchcharacter = ci.MultiClusterIndex(featuresVeccharacter,list_character)
-	with open('/media/anlab/data-2tb/ANLAB_THUY/SparseToDenseVector/LashinbangMasterSample/ModelSearch/modelTFIDF/modelGenFeatureTfidf.pickle', 'wb') as handle:
-		pickle.dump(tv, handle, protocol=pickle.HIGHEST_PROTOCOL)
+	# searchcharacter = ci.MultiClusterIndex(featuresVeccharacter,list_character)
+	# with open('/media/anlab/data-2tb/ANLAB_THUY/SparseToDenseVector/LashinbangMasterSample/ModelSearch/modelTFIDF/modelGenFeatureTfidf.pickle', 'wb') as handle:
+	# 	pickle.dump(tv, handle, protocol=pickle.HIGHEST_PROTOCOL)
 	
-	with open('/media/anlab/data-2tb/ANLAB_THUY/SparseToDenseVector/LashinbangMasterSample/ModelSearch/modelTFIDF/searchCharacter.pickle', 'wb') as handle:
-		pickle.dump(searchcharacter, handle, protocol=pickle.HIGHEST_PROTOCOL)
+	# with open('/media/anlab/data-2tb/ANLAB_THUY/SparseToDenseVector/LashinbangMasterSample/ModelSearch/modelTFIDF/searchCharacter.pickle', 'wb') as handle:
+	# 	pickle.dump(searchcharacter, handle, protocol=pickle.HIGHEST_PROTOCOL)
 	searchSeries = ci.MultiClusterIndex(featuresSeries,list_series)
-	with open('/media/anlab/data-2tb/ANLAB_THUY/SparseToDenseVector/LashinbangMasterSample/ModelSearch/modelTFIDF/searchSeries.pickle', 'wb') as handle:
-		pickle.dump(searchSeries, handle, protocol=pickle.HIGHEST_PROTOCOL)
-	searchAuthor = ci.MultiClusterIndex(featuresAuthor,list_author)
-	with open('/media/anlab/data-2tb/ANLAB_THUY/SparseToDenseVector/LashinbangMasterSample/ModelSearch/modelTFIDF/searchAuthor.pickle', 'wb') as handle:
-		pickle.dump(searchAuthor, handle, protocol=pickle.HIGHEST_PROTOCOL)
+	# with open('/media/anlab/data-2tb/ANLAB_THUY/SparseToDenseVector/LashinbangMasterSample/ModelSearch/modelTFIDF/searchSeries.pickle', 'wb') as handle:
+	# 	pickle.dump(searchSeries, handle, protocol=pickle.HIGHEST_PROTOCOL)
+	# searchAuthor = ci.MultiClusterIndex(featuresAuthor,list_author)
+	# with open('/media/anlab/data-2tb/ANLAB_THUY/SparseToDenseVector/LashinbangMasterSample/ModelSearch/modelTFIDF/searchAuthor.pickle', 'wb') as handle:
+	# 	pickle.dump(searchAuthor, handle, protocol=pickle.HIGHEST_PROTOCOL)
 	search_data = [
 		'ー',
 		'ヴラド三世',
 		'bb'
 	]
-	searchTFIDF(search_data,searchAuthor,tv,topk=5)
+	searchTFIDF(search_data,searchSeries,tv,topk=5)
